@@ -14,17 +14,17 @@ const UserContext = ({children}) => {
    
     // const [loading, setLoading] = useState(true);
   
-    // const createUser = (email, password) => {
-    //     return createUserWithEmailAndPassword(auth, email, password);
-    // }
+    const createUser = (email, password) => {
+        return createUserWithEmailAndPassword(auth, email, password);
+    }
 
-    // const signIn = (email, password) => {
-    //     return signInWithEmailAndPassword(auth, email, password);
-    // }
+    const signIn = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password);
+    }
 
-    // const logOut = () => {
-    //     return signOut(auth);
-    // }
+    const logOut = () => {
+        return signOut(auth);
+    }
 
     const providerLogin = (provider) => {
         return signInWithPopup(auth, provider);
@@ -44,7 +44,7 @@ const UserContext = ({children}) => {
 
     },[])
 
-    const authInfo = {user, providerLogin};
+    const authInfo = {user, providerLogin, logOut, createUser, signIn};
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

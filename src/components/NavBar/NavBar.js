@@ -1,7 +1,7 @@
 import { getAuth } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import {  FaUser } from 'react-icons/fa';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UseContexts';
 import edu from '../../edu.png';
 import app from '../../firebase/firebase.config';
@@ -11,8 +11,13 @@ const NavBar = () => {
     const auth = getAuth(app);
     console.log(auth);
      const [isExpanded, toggleExpansion] = useState(false);
-     const {user} = useContext(AuthContext);
+     const {user, logOut} = useContext(AuthContext);
      console.log(user)
+      const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
     return (
         <div>
             <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
@@ -44,17 +49,30 @@ const NavBar = () => {
                         <NavLink to='faq' className=" text-2xl font-bold block mt-4 lg:inline-block lg:ml-4 lg:mt-0 text-teal-200 hover:text-white">
                             FAQ
                         </NavLink>
-                        <NavLink to='login' className=" text-2xl font-bold block mt-4 lg:inline-block lg:ml-4 lg:mt-0 text-teal-200 hover:text-white">
-                            LogIn
-                        </NavLink>
+                        
                     </div>
                     <div className="flex items-center flex-shrink-0 text-white mr-6">
                         <button className='mr-4'>Dark</button>
-                        {/* <p className='mr-4'>{user.displayName}</p>
-                        {user.photoURL?
-                        <img className='rounded-lg' style={{height:'30px'}} src={user.photoURL} alt="" /> 
+                        {user?.uid ?
+                        <>
+                             <span className='mr-4'>{user?.displayName}</span>
+                             <button className='mr-4' onClick={handleLogOut}>Log Out</button>
+                        </>
+                         :
+                         <>
+                         <NavLink to='login' className=" text-2xl font-bold block mt-4 lg:inline-block lg:ml-4 lg:mt-0 text-teal-200 hover:text-white">
+                            LogIn
+                        </NavLink>
+                         <NavLink to='register' className=" text-2xl font-bold block mt-4 mr-4 lg:inline-block lg:ml-4 lg:mt-0 text-teal-200 hover:text-white">
+                            Register
+                        </NavLink>
+                         </>
+                        }
+                        
+                        {user?.photoURL?
+                        <img className='rounded-lg' style={{height:'30px'}} src={user?.photoURL} alt="" /> 
                         :       <FaUser />
-                    } */}
+                    }
                 
                 </div>
                 </div>

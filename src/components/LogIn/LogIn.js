@@ -1,12 +1,15 @@
+import { computeHeadingLevel } from '@testing-library/react';
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UseContexts';
  
 
 const LogIn = () => {
 
-    const {providerLogin} = useContext(AuthContext);
-    const googleProvider = new GoogleAuthProvider()
+    const {providerLogin, signIn} = useContext(AuthContext);
+    const googleProvider = new GoogleAuthProvider();
+    const navigate = useNavigate();
 
      const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
@@ -15,6 +18,22 @@ const LogIn = () => {
                 console.log(user);
             })
             .catch(error => console.error(error))
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        signIn(email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+            form.reset();
+            navigate('/');
+        })
+        .catch(error => console.error(error))
     }
 
 
@@ -28,7 +47,7 @@ const LogIn = () => {
                     </p>
                 </div>
                 <form
-                    //   onSubmit={handleSubmit}
+                      onSubmit={handleSubmit}
                     noValidate=''
                     action=''
                     className='space-y-6 ng-untouched ng-pristine ng-valid'
@@ -43,6 +62,7 @@ const LogIn = () => {
                                 type='email'
                                 name='email'
                                 id='email'
+                                required
                                 placeholder='Enter Your Email Here'
                                 className='w-full px-3 py-2 border rounded-md border-gray-300 focus:border-gray-900 bg-gray-200 text-gray-900'
                                 data-temp-mail-org='0'
@@ -59,6 +79,7 @@ const LogIn = () => {
                                 type='password'
                                 name='password'
                                 id='password'
+                                required
                                 placeholder='*******'
                                 className='w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:border-gray-900 text-gray-900'
                             />
