@@ -1,7 +1,7 @@
 import { computeHeadingLevel } from '@testing-library/react';
 import { GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UseContexts';
  
 
@@ -10,6 +10,10 @@ const LogIn = () => {
     const {providerLogin, signIn} = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
     const navigate = useNavigate();
+    const [error, setError] = useState('');
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
 
      const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
@@ -31,9 +35,13 @@ const LogIn = () => {
             const user = result.user;
             console.log(user);
             form.reset();
-            navigate('/');
+            setError('');
+            navigate(from, {replace: true});
         })
-        .catch(error => console.error(error))
+        .catch(error => {
+            console.error(error);
+            setError(error.message)
+        })
     }
 
 
@@ -41,7 +49,7 @@ const LogIn = () => {
         <div className='flex justify-center items-center pt-8 mt-24'>
             <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
                 <div className='mb-8 text-center'>
-                    <h1 className='my-3 text-4xl font-bold'>Sign in</h1>
+                    <h1 className='my-3 text-4xl font-bold'>Log in</h1>
                     <p className='text-sm text-gray-400'>
                         Sign in to access your account
                     </p>
@@ -57,8 +65,7 @@ const LogIn = () => {
                             <label htmlFor='email' className='block mb-2 text-sm'>
                                 Email address
                             </label>
-                            <input
-                                // onBlur={event => setUserEmail(event.target.value)}
+                            <input  
                                 type='email'
                                 name='email'
                                 id='email'
@@ -83,10 +90,6 @@ const LogIn = () => {
                                 placeholder='*******'
                                 className='w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:border-gray-900 text-gray-900'
                             />
-
-                            {/* <button onClick={() => setShowPass(!showPass)}>
-                Show Password
-              </button> */}
                         </div>
                     </div>
 
@@ -95,7 +98,7 @@ const LogIn = () => {
                             type='submit'
                             className='w-full px-8 py-3 font-semibold rounded-md bg-gray-900 hover:bg-gray-700 hover:text-white text-gray-100'
                         >
-                            Sign in
+                            Log in
                         </button>
                     </div>
                 </form>
@@ -106,6 +109,7 @@ const LogIn = () => {
                     >
                         Forgot password?
                     </button>
+                   <p className='text-red-500'><small>{error}</small></p>
                 </div>
                 <div className='flex items-center pt-4 space-x-1'>
                     <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
@@ -141,10 +145,10 @@ const LogIn = () => {
                 </div>
                 <p className='px-6 text-sm text-center text-gray-400'>
                     Don't have an account yet?
-                    <h1 className='hover:underline text-gray-600'>
-                        Sign up
-                    </h1>
-                    .
+                    <Link to='/register' className='hover:underline text-gray-600'>
+                        Register
+                    </Link>
+                    
                 </p>
             </div>
         </div>

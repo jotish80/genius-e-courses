@@ -1,18 +1,19 @@
-import { getAuth } from 'firebase/auth';
+ 
 import React, { useContext, useState } from 'react';
 import {  FaUser } from 'react-icons/fa';
-import { Link, NavLink } from 'react-router-dom';
+import {  NavLink } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UseContexts';
 import edu from '../../edu.png';
-import app from '../../firebase/firebase.config';
+import ReactTooltip from 'react-tooltip';
+ 
  
 
 const NavBar = () => {
-    const auth = getAuth(app);
-    console.log(auth);
+    
      const [isExpanded, toggleExpansion] = useState(false);
      const {user, logOut} = useContext(AuthContext);
-     console.log(user)
+     
+
       const handleLogOut = () => {
         logOut()
             .then(() => { })
@@ -52,7 +53,7 @@ const NavBar = () => {
                         
                     </div>
                     <div className="flex items-center flex-shrink-0 text-white mr-6">
-                        <button className='mr-4'>Dark</button>
+                        <button className='mr-4'>Dark Mood</button>
                         {user?.uid ?
                         <>
                              <span className='mr-4'>{user?.displayName}</span>
@@ -70,9 +71,13 @@ const NavBar = () => {
                         }
                         
                         {user?.photoURL?
-                        <img className='rounded-lg' style={{height:'30px'}} src={user?.photoURL} alt="" /> 
-                        :       <FaUser />
-                    }
+                        <>
+                            <p data-tip={user.displayName}><img  className='rounded-lg' style={{height:'30px'}} src={user?.photoURL} alt=""  /> </p>
+                        <ReactTooltip />
+                        </>
+                        
+                        : <FaUser />
+                        }
                 
                 </div>
                 </div>
