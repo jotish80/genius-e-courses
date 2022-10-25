@@ -1,12 +1,21 @@
-import React, { useState } from 'react';
+import { getAuth } from 'firebase/auth';
+import React, { useContext, useState } from 'react';
 import {  FaUser } from 'react-icons/fa';
+import { AuthContext } from '../../contexts/UseContexts';
+import edu from '../../edu.png';
+import app from '../../firebase/firebase.config';
  
 
 const NavBar = () => {
+    const auth = getAuth(app);
+    console.log(auth);
      const [isExpanded, toggleExpansion] = useState(false);
+     const {user} = useContext(AuthContext);
+     console.log(user)
     return (
         <div>
             <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
+                <img className='w-10 mr-4' src={edu} alt="" />
                 <div>
                         <h1 className="text-3xl font-bold block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">Genius-E-Learning</h1>
                     </div>
@@ -22,7 +31,7 @@ const NavBar = () => {
                 </div>
                 <div className={`${isExpanded ? `block` : `hidden`
                     } w-full block flex-grow lg:flex lg:items-center lg:w-auto`}>
-                    <div className="text-sm lg:flex-grow">
+                    <div className="text-sm sm:flex-grow lg:items-center">
 
                         <h1  className=" text-2xl font-bold block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
                             Courses
@@ -31,13 +40,18 @@ const NavBar = () => {
                         <h1 className=" text-2xl font-bold block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
                             Blog
                         </h1>
-                        <h1 className=" text-2xl font-bold block mt-4 ml-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+                        <h1 className=" text-2xl font-bold block mt-4 lg:inline-block lg:ml-4 lg:mt-0 text-teal-200 hover:text-white">
                             FAQ
                         </h1>
                     </div>
                     <div className="flex items-center flex-shrink-0 text-white mr-6">
-                    <button>Dark</button>
-                    <FaUser />
+                        <button className='mr-4'>Dark</button>
+                        <p className='mr-4'>{user.displayName}</p>
+                        {user.photoURL?
+                        <img className='rounded-lg' style={{height:'30px'}} src={user.photoURL} alt="" /> 
+                        :       <FaUser />
+                    }
+                
                 </div>
                 </div>
             </nav>
