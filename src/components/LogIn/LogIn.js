@@ -1,5 +1,5 @@
 import { computeHeadingLevel } from '@testing-library/react';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UseContexts';
@@ -7,8 +7,9 @@ import { AuthContext } from '../../contexts/UseContexts';
 
 const LogIn = () => {
 
-    const {providerLogin, signIn} = useContext(AuthContext);
+    const {providerLogin, signIn, githubProviderLogin} = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
     const navigate = useNavigate();
     const [error, setError] = useState('');
     const location = useLocation();
@@ -22,6 +23,15 @@ const LogIn = () => {
                 console.log(user);
             })
             .catch(error => console.error(error))
+    }
+
+    const handleGithubSignIn = () => {
+        githubProviderLogin(githubProvider)
+        .then(result =>{
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error => console.error(error))
     }
 
     const handleSubmit = (e) => {
@@ -82,7 +92,7 @@ const LogIn = () => {
                                 </label>
                             </div>
                             <input
-                                // type={showPass ? 'text' : 'password'}
+                                
                                 type='password'
                                 name='password'
                                 id='password'
@@ -104,7 +114,7 @@ const LogIn = () => {
                 </form>
                 <div className='space-y-1'>
                     <button
-                        // onClick={handleReset}
+                        
                         className='text-xs hover:underline text-gray-400'
                     >
                         Forgot password?
@@ -133,7 +143,9 @@ const LogIn = () => {
                         </svg>
                     </button>
 
-                    <button aria-label='Log in with GitHub' className='p-3 rounded-sm'>
+                    <button onClick={handleGithubSignIn}
+                     aria-label='Log in with GitHub'
+                      className='p-3 rounded-sm'>
                         <svg
                             xmlns='http://www.w3.org/2000/svg'
                             viewBox='0 0 32 32'

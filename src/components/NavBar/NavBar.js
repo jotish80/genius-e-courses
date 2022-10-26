@@ -12,7 +12,7 @@ const NavBar = () => {
     
      const [isExpanded, toggleExpansion] = useState(false);
      const {user, logOut} = useContext(AuthContext);
-     
+     console.log(user);
 
       const handleLogOut = () => {
         logOut()
