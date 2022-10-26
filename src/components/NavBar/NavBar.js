@@ -53,7 +53,8 @@ const NavBar = () => {
                         
                     </div>
                     <div className="flex items-center flex-shrink-0 text-white mr-6">
-                        <button className='mr-4'>Dark Mood</button>
+                        <button className='mr-4 btn btn-info'>Dark Mood</button>
+                        <button className='mr-4 btn btn-info'>Light Mood</button>
                         {user?.uid ?
                         <>
                              <span className='mr-4'>{user?.displayName}</span>
