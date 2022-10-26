@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 import { AuthContext } from '../../contexts/UseContexts';
 
 const Register = () => {
@@ -20,6 +21,7 @@ const Register = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
+            toast('user created successfully',{position:'top-center'});
             setError('');
             form.reset();
             handleUpdateUserProfile(name, photoURL)
@@ -49,6 +51,7 @@ const Register = () => {
                        Register to access your account
                     </p>
                 </div>
+                <ToastContainer />
                 <form
                          onSubmit={handleSubmit}
                     noValidate=''

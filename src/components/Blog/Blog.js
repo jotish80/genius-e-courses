@@ -4,25 +4,28 @@ const Blog = () => {
     return (
         <div className='w-[90%] mx-auto mt-12 mb-12'>
             <div className='shadow-lg p-20 rounded-lg'>
-                <h1 className='text-2xl font-bold'>What is the purpose of react router?</h1>
+                <h1 className='text-2xl font-bold'>What is cors?</h1>
                 <p className='text-xl'>
-                    React Router is a standard library for routing in React. It enables the navigation among views of various components in a React Application, allows changing the browser URL, and keeps the UI in sync with the URL.We will use React Router to navigate between these components.
+                    CORS stands for Cross-Origin Resource Sharing . It allows us to relax the security applied to an API. This is done by bypassing the Access-Control-Allow-Origin headers, which specify which origins can access the API.
                 </p>
             </div>
             <div className='shadow-lg p-20 rounded-lg mt-10'>
-                <h1 className='text-2xl font-bold'>How does the context api work?</h1>
+                <h1 className='text-2xl font-bold'>Why are you using firebase? What other options do you have to implement authentication?</h1>
                 <p className='text-xl'>
-                    React's context allows you to share information to any component, by storing it in a central place and allowing access to any component that requests it (usually you are only able to pass data from parent to child via props).
+                    The Firebase Realtime Database lets you build rich, collaborative applications by allowing secure access to the database directly from client-side code. Data is persisted locally, and even while offline, realtime events continue to fire, giving the end user a responsive experience.
+                </p>
+                <p className='text-xl'>Other ways to authenticate can be through cards, retina scans, voice recognition, and fingerprints.</p>
+            </div>
+            <div className='shadow-lg p-20 rounded-lg mt-10'>
+                <h1 className='text-2xl font-bold'>How does the private route work?</h1>
+                <p className='text-xl'>
+                    The private route component is similar to the public route, the only change is that redirect URL and authenticate condition. If the user is not authenticated he will be redirected to the login page and the user can only access the authenticated routes If he is authenticated
                 </p>
             </div>
             <div className='shadow-lg p-20 rounded-lg mt-10'>
-                <h1 className='text-2xl font-bold'>Why you should use useRef Hook?</h1>
+                <h1 className='text-2xl font-bold'>What is Node? How does Node work?</h1>
                 <p className='text-xl'>
-                    The useRef Hook lets us create mutable variables inside functional components. There are three main key points that you should keep in mind when using the useRef Hook: <br />
-
-                    a) A ref created with useRef will be created only when the component has been mounted and preserved for the full lifecycle. <br />
-                    b) Refs can be used for accessing DOM nodes or React elements, and for storing mutable variables (like with instance variables in class components). <br />
-                    c) Updating a ref is a side effect so it should be done only inside a useEffect (or useLayoutEffect) or inside an event handler.
+                    Node As an asynchronous event-driven JavaScript runtime .It is a used as backend service where javascript works on the server-side of the application. This way javascript is used on both frontend and backend. Node. js runs on chrome v8 engine which converts javascript code into machine code, it is highly scalable, lightweight, fast, and data-intensive.
                 </p>
             </div>
         </div>

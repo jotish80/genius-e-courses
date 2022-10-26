@@ -17,7 +17,7 @@ function App() {
    {
     path: '/', element: <Main />,
     children: [
-    {path:'/', element: <Home />},
+   {path:'/', element: <Home />},
    {path:'/header', element: <Header />},
    {path:'/register', element: <Register />},
    {path:'/login', element: <LogIn />},
