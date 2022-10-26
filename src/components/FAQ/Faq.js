@@ -1,9 +1,10 @@
 import React from 'react';
+import Blog from '../Blog/Blog';
 
 const Faq = () => {
     return (
         <div>
-            <h1>this is frequently ask questions</h1>
+            <Blog />
         </div>
     );
 };

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import CourseDetails from '../CourseDetails/CourseDetails';
 
 const SideBar = () => {
        const [courses, setCourses] = useState([]);
@@ -18,6 +19,10 @@ const SideBar = () => {
                             <Link to={`/courses/${course.id}`} >{course.name}</Link>
                     </p> )
                 }
+
+                {/* {
+                    courses.map(singleCourse => <CourseDetails key={singleCourse.id} singleCourse={singleCourse}></CourseDetails>)
+                } */}
         </div>
     );
 };

@@ -4,6 +4,7 @@ import './App.css';
 import Blog from './components/Blog/Blog';
 import Courses from './components/Courses/Courses';
 import Faq from './components/FAQ/Faq';
+import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import LogIn from './components/LogIn/LogIn';
 import NotFound from './components/NotFound/NotFound';
@@ -16,7 +17,8 @@ function App() {
    {
     path: '/', element: <Main />,
     children: [
-   {path:'/home', element: <Home />},
+  //  {path:'/home', element: <Home />},
+   {path:'/header', element: <Header />},
    {path:'/register', element: <Register />},
    {path:'/login', element: <LogIn />},
    {path:'/courses', element: <Courses />},

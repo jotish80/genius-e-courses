@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UseContexts';
 import edu from '../../edu.png';
 import ReactTooltip from 'react-tooltip';
+import ToggleButton from 'react-toggle-button'
 
 
 
@@ -12,7 +13,10 @@ const NavBar = () => {
 
     const [isExpanded, toggleExpansion] = useState(false);
     const { user, logOut } = useContext(AuthContext);
-   
+    const [state, setState] = useState(false);
+    const toggle = () => {
+        setState(!state);
+    }
 
     const handleLogOut = () => {
         logOut()
@@ -24,7 +28,7 @@ const NavBar = () => {
             <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
                 <img className='w-10 mr-4' src={edu} alt="" />
                 <div>
-                    <NavLink to='/' className="text-3xl font-bold block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">Genius-E-Learning</NavLink>
+                    <NavLink to='/header' className="text-3xl font-bold block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">Genius-E-Learning</NavLink>
                 </div>
 
                 <div className="block lg:hidden">
@@ -39,7 +43,7 @@ const NavBar = () => {
                     } w-full block flex-grow lg:flex lg:items-center lg:w-auto`}>
                     <div className="text-sm sm:flex-grow lg:items-center">
 
-                        <NavLink to='/home' className=" text-2xl font-bold block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                        <NavLink to='/courses' className=" text-2xl font-bold block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
                             Courses
                         </NavLink>
 
@@ -52,13 +56,8 @@ const NavBar = () => {
 
                     </div>
                     <div className="flex items-center flex-shrink-0 text-white mr-6">
-                        <div className="form-control">
-                            <label className="label cursor-pointer">
-                                <span className="label-text">Remember me</span>
-                                <input type="checkbox" className="toggle" checked />
-                            </label>
-                        </div>
-
+ 
+                        <button onClick={toggle} className={'toggle--button btn btn-info' + (state ? 'toggle--close':"")}>{state? 'Dark' : 'Light'}</button>
                         {user?.uid ?
                             <>
                                 <span className='mr-4'>{user?.displayName}</span>
