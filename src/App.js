@@ -1,5 +1,4 @@
 
-import { FaFlagCheckered } from 'react-icons/fa';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Blog from './components/Blog/Blog';
@@ -12,6 +11,7 @@ import NotFound from './components/NotFound/NotFound';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Register from './components/Register/Register';
 import Main from './layout/Main';
+import { v4 as uuid } from 'uuid';
 
 function App() {
 

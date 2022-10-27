@@ -33,10 +33,12 @@ const UserContext = ({children}) => {
     }
 
     const providerLogin = (provider) => {
+        setLoading(true);
         return signInWithPopup(auth, provider);
     }
 
     const githubProviderLogin = (provider) => {
+        setLoading(true); 
         return signInWithPopup(auth, provider);
     }
 

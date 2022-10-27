@@ -17,6 +17,7 @@
     "react-toastify": "^9.0.8",
     "react-toggle-button": "^2.2.0",
     "react-tooltip": "^4.4.3",
+    "uuid": "^9.0.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

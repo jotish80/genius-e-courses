@@ -1,6 +1,6 @@
 # Genius E Courses
 
-[Genius-E-Courses](genius-e-courses.netlify.app).
+[Genius-E-Courses] (https://genius-e-courses.netlify.app/).
 
 ### This project is used by following features:
 
