@@ -157,7 +157,7 @@ const LogIn = () => {
                 </div>
                 <p className='px-6 text-sm text-center text-gray-400'>
                     Don't have an account yet?
-                    <Link to='/register' className='hover:underline text-gray-600'>
+                    <Link to='/register' className='hover:underline text-gray-700'>
                         Register
                     </Link>
                     

@@ -2,6 +2,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Blog from './components/Blog/Blog';
+import CourseDetails from './components/CourseDetails/CourseDetails';
 import Courses from './components/Courses/Courses';
 import Faq from './components/FAQ/Faq';
 import Header from './components/Header/Header';
@@ -22,7 +23,7 @@ function App() {
    {path:'/register', element: <Register />},
    {path:'/login', element: <LogIn />},
    {path:'/courses', element: <Courses />},
-   {path:'/courses/:id', element: <Courses />},
+    
    {path:'/blog', element: <Blog />},
    {path:'/faq', element: <Faq />},
    {path:'*', element: <NotFound />},

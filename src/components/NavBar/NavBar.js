@@ -14,6 +14,7 @@ const NavBar = () => {
     const [isExpanded, toggleExpansion] = useState(false);
     const { user, logOut } = useContext(AuthContext);
     const [state, setState] = useState(false);
+    
     const toggle = () => {
         setState(!state);
     }
