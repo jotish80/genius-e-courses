@@ -1,10 +1,14 @@
-# Getting Started with Create React App
+# Genius E Courses
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Genius-E-Courses](genius-e-courses.netlify.app).
 
-## Available Scripts
+### This project is used by following features:
 
-In the project directory, you can run:
+ * Home page contain navbar. Every link I used Route.
+ * Navbar contain routes like login, register, courses, blog, FAQ, toggle button and if you click on title you will see header with courses.
+ * Courses I have protected route for premium services.
+ * Blog route you can read blog also you have chart of statistics.
+ * Technology I used REACT, NODE JS for server side, TAILWIND CSS, REACT TOAST, PDF maker, in authentication google, github and email and password.
 
 ### `npm start`
 

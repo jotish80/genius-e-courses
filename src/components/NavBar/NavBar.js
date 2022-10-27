@@ -5,10 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UseContexts';
 import edu from '../../edu.png';
 import ReactTooltip from 'react-tooltip';
-import ToggleButton from 'react-toggle-button'
-
-
-
+ 
 const NavBar = () => {
 
     const [isExpanded, toggleExpansion] = useState(false);
@@ -60,9 +57,8 @@ const NavBar = () => {
  
                         <button onClick={toggle} className={'toggle--button btn btn-info' + (state ? 'toggle--close':"")}>{state? 'Dark' : 'Light'}</button>
                         {user?.uid ?
-                            <>
-                                <span className='mr-4'>{user?.displayName}</span>
-                                <button className='mr-4 text-xl' onClick={handleLogOut}>LogOut</button>
+                            <>     
+                                <button className='mr-4 text-xl ml-4' onClick={handleLogOut}>LogOut</button>
                             </>
                             :
                             <>

@@ -4,7 +4,7 @@ const SideBar = ({ getCourse }) => {
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/courses`)
+        fetch(`https://genius-e-courses-server.vercel.app/courses`)
             .then(res => res.json())
             .then(data => setCourses(data))
     }, [])
@@ -17,8 +17,6 @@ const SideBar = ({ getCourse }) => {
                     <h3 className='cursor-pointer' onClick={() => getCourse(course.id)}   >{course.name}</h3>
                 </p>)
             }
-
-
         </div>
     );
 };

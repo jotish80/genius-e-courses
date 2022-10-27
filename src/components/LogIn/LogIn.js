@@ -1,4 +1,4 @@
-import { computeHeadingLevel } from '@testing-library/react';
+ 
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -14,13 +14,14 @@ const LogIn = () => {
     const [error, setError] = useState('');
     const location = useLocation();
 
-    const from = location.state?.from?.pathname || '/';
+    let from = location.state?.from?.pathname || '/header';
 
      const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate(from, {replace: true});
             })
             .catch(error => console.error(error))
     }
@@ -30,6 +31,7 @@ const LogIn = () => {
         .then(result =>{
             const user = result.user;
             console.log(user);
+            navigate(from, {replace: true});
         })
         .catch(error => console.error(error))
     }
@@ -65,7 +67,7 @@ const LogIn = () => {
                     </p>
                 </div>
                 <form
-                      onSubmit={handleSubmit}
+                    onSubmit={handleSubmit}
                     noValidate=''
                     action=''
                     className='space-y-6 ng-untouched ng-pristine ng-valid'
@@ -97,7 +99,7 @@ const LogIn = () => {
                                 name='password'
                                 id='password'
                                 required
-                                placeholder='*******'
+                                placeholder='******'
                                 className='w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:border-gray-900 text-gray-900'
                             />
                         </div>

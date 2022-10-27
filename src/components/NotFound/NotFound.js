@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const NotFound = () => {
-    return (
-        <section className='px-4 py-32 mx-auto max-w-7xl'>
+  return (
+    <section className='px-4 py-32 mx-auto max-w-7xl'>
       <div className='grid items-center w-full grid-cols-1 gap-10 mx-auto md:w-4/5 lg:grid-cols-2 xl:gap-32'>
         <div>
           <p className='mb-2 text-xs font-semibold tracking-wide text-gray-500 uppercase'>
@@ -34,7 +34,7 @@ const NotFound = () => {
         </div>
       </div>
     </section>
-    );
+  );
 };
 
 export default NotFound;
